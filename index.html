@@ -2,15 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url='./asha_amol_wedding_invitation%20%288%29%20%281%29.html'" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASHA & AMOL | Wedding Invitation</title>
+    <script>
+      (() => {
+        const targetFile = 'asha_amol_wedding_invitation (8) (1).html';
+        const currentPath = window.location.pathname.split('/').pop() || '';
+
+        if (!currentPath || /index\.html?/i.test(currentPath) || currentPath === '') {
+          const redirectUrl = new URL('./' + encodeURI(targetFile), window.location.href).href;
+          if (window.location.href !== redirectUrl) {
+            window.location.replace(redirectUrl);
+          }
+        }
+      })();
+    </script>
     <style>
       :root {
         --bg: #fcfaf6;
         --ink: #4a3e3d;
         --gold: #c5a059;
       }
+      * { box-sizing: border-box; }
       body {
         margin: 0;
         min-height: 100vh;

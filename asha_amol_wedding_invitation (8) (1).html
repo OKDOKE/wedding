@@ -126,57 +126,6 @@
             animation: fall linear infinite;
         }
 
-        .quick-actions {
-            position: fixed;
-            left: 50%;
-            bottom: 1rem;
-            transform: translateX(-50%);
-            z-index: 60;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.45rem;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(197, 160, 89, 0.4);
-            box-shadow: 0 12px 30px rgba(107, 31, 45, 0.15);
-            backdrop-filter: blur(8px);
-        }
-
-        .quick-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.35rem;
-            padding: 0.6rem 0.9rem;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #D4B473 0%, #E8DCB8 50%, #C5A059 100%);
-            color: #6B1F2D;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.82rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            text-decoration: none;
-            font-weight: 700;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 6px 16px rgba(197, 160, 89, 0.2);
-        }
-
-        .quick-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.25);
-        }
-
-        .quick-btn.whatsapp {
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-            color: white;
-        }
-
-        .quick-btn.call {
-            background: linear-gradient(135deg, #f5d5b0 0%, #f0b04d 100%);
-        }
-
         @keyframes fall {
             0% {
                 transform: translateY(-5vh) rotate(0deg) scale(0.7);
@@ -186,21 +135,6 @@
             100% {
                 transform: translateY(105vh) rotate(540deg) scale(1.05);
                 opacity: 0;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .quick-actions {
-                width: calc(100% - 1.25rem);
-                justify-content: space-between;
-                padding: 0.4rem;
-            }
-
-            .quick-btn {
-                flex: 1;
-                padding: 0.55rem 0.4rem;
-                font-size: 0.7rem;
-                letter-spacing: 0.1em;
             }
         }
     </style>
@@ -265,13 +199,6 @@
             </div>
         </div>
     </header>
-
-    <div class="quick-actions" aria-label="Quick action buttons">
-        <a href="#events" class="quick-btn"><i class="fa-solid fa-calendar-check"></i><span>Events</span></a>
-        <a href="#venue" class="quick-btn call"><i class="fa-solid fa-location-dot"></i><span>Venue</span></a>
-        <a href="tel:+919352848719" class="quick-btn call"><i class="fa-solid fa-phone"></i><span>Call</span></a>
-        <a href="https://wa.me/919352848719?text=Namaste%20Deepak%20Ji,%20regarding%20Asha%20and%20Amol%20wedding" target="_blank" rel="noopener noreferrer" class="quick-btn whatsapp"><i class="fa-brands fa-whatsapp"></i><span>Chat</span></a>
-    </div>
 
     <main id="home" class="bg-royal-pattern">
         <section class="min-h-[85vh] flex flex-col justify-center items-center text-center px-4 py-16 relative overflow-hidden">

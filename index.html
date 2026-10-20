@@ -22,7 +22,6 @@
         --bg: #fcfaf6;
         --ink: #4a3e3d;
         --gold: #c5a059;
-        --burgundy: #6b1f2d;
       }
       * { box-sizing: border-box; }
       body {
@@ -41,15 +40,13 @@
         border-radius: 24px;
         background: rgba(255,255,255,0.5);
         box-shadow: 0 20px 45px rgba(140, 109, 49, 0.12);
-        max-width: 560px;
-        width: min(90vw, 560px);
       }
       h1 {
         margin: 0 0 0.75rem;
         font-size: clamp(2rem, 4vw, 3rem);
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--burgundy);
+        color: #6b1f2d;
       }
       p {
         margin: 0 0 1rem;
@@ -57,44 +54,17 @@
         text-transform: uppercase;
         font-size: 0.8rem;
       }
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.75rem;
-        margin-top: 1rem;
-      }
-      .action-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        padding: 0.85rem 1.2rem;
+      a {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.85rem 1.4rem;
         border-radius: 999px;
         background: linear-gradient(135deg, #d4b473 0%, #e8dcb8 50%, #c5a059 100%);
-        color: var(--burgundy);
+        color: #6b1f2d;
         text-decoration: none;
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        border: none;
-        box-shadow: 0 10px 20px rgba(197, 160, 89, 0.15);
-      }
-      .action-btn.secondary {
-        background: linear-gradient(135deg, #ffffff 0%, #f7eee7 100%);
-        border: 1px solid rgba(197, 160, 89, 0.4);
-      }
-      .action-btn.whatsapp {
-        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-        color: white;
-      }
-      @media (max-width: 480px) {
-        .actions {
-          flex-direction: column;
-        }
-        .action-btn {
-          width: 100%;
-        }
       }
     </style>
   </head>
@@ -102,11 +72,7 @@
     <div class="card">
       <h1>Asha &amp; Amol</h1>
       <p>Loading wedding invitation...</p>
-      <div class="actions">
-        <a class="action-btn" href="./asha_amol_wedding_invitation%20%288%29%20%281%29.html">Open invitation</a>
-        <a class="action-btn secondary" href="tel:+919352848719">Call</a>
-        <a class="action-btn whatsapp" href="https://wa.me/919352848719?text=Namaste%20Deepak%20Ji,%20regarding%20Asha%20and%20Amol%20wedding" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      </div>
+      <a href="./asha_amol_wedding_invitation%20%288%29%20%281%29.html">Open invitation</a>
     </div>
   </body>
 </html>

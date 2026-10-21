@@ -153,7 +153,7 @@
 
     <div id="videoOpenerOverlay" class="fixed inset-0 z-50 bg-black flex flex-col justify-center items-center transition-opacity duration-1000 ease-in-out">
         <div class="relative w-full h-full max-w-md md:max-w-lg mx-auto flex items-center justify-center overflow-hidden shadow-2xl">
-            <video id="openerVideo" class="w-full h-full object-cover" autoplay muted playsinline loop preload="auto" poster="https://placehold.co/720x1280/6B1F2D/E8DCB8?text=ASHA+%26+AMOL+WEDDING">
+            <video id="openerVideo" class="w-full h-full object-cover" autoplay muted playsinline preload="auto" poster="https://placehold.co/720x1280/6B1F2D/E8DCB8?text=ASHA+%26+AMOL+WEDDING">
                 <source src="./gemini_generated_video_03df296a%20(1).mp4" type="video/mp4">
                 Your browser does not support video playback.
             </video>
@@ -527,6 +527,7 @@
             }, 1200);
         }
 
+        openerVideo.loop = false;
         openerVideo.addEventListener('ended', () => {
             setTimeout(() => {
                 hideVideoOverlay();
@@ -546,6 +547,7 @@
 
         function enableAudioAndPlay() {
             openerVideo.muted = false;
+            openerVideo.loop = false;
             openerVideo.play();
             tapPlayHint.classList.add('opacity-0', 'pointer-events-none');
             unmuteIcon.className = 'fa-solid fa-volume-high text-pastel-gold';
@@ -571,6 +573,7 @@
         function replayOpenerOverlay() {
             showVideoOverlay();
             openerVideo.currentTime = 0;
+            openerVideo.loop = false;
             openerVideo.muted = true;
             unmuteIcon.className = 'fa-solid fa-volume-xmark text-pastel-gold';
             unmuteText.innerText = 'ENABLE SOUND';

@@ -11,9 +11,19 @@
 
         if (!currentPath || /index\.html?/i.test(currentPath) || currentPath === '') {
           const redirectUrl = new URL('./' + encodeURI(targetFile), window.location.href).href;
-          if (window.location.href !== redirectUrl) {
-            window.location.replace(redirectUrl);
-          }
+          const startFadeOut = () => {
+            const shell = document.querySelector('.page-shell');
+            if (shell) {
+              shell.classList.add('is-exiting');
+            }
+            window.setTimeout(() => {
+              if (window.location.href !== redirectUrl) {
+                window.location.replace(redirectUrl);
+              }
+            }, 850);
+          };
+
+          window.addEventListener('load', startFadeOut, { once: true });
         }
       })();
     </script>
@@ -23,9 +33,16 @@
         --ink: #4a3e3d;
         --gold: #c5a059;
       }
+
       * { box-sizing: border-box; }
-      body {
+
+      html, body {
         margin: 0;
+        width: 100%;
+        min-height: 100%;
+      }
+
+      body {
         min-height: 100vh;
         display: grid;
         place-items: center;
@@ -33,6 +50,21 @@
         color: var(--ink);
         font-family: Georgia, "Times New Roman", serif;
       }
+
+      .page-shell {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        min-height: 100vh;
+        opacity: 1;
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .page-shell.is-exiting {
+        opacity: 0;
+        transform: scale(0.985);
+      }
+
       .card {
         text-align: center;
         padding: 2rem 2.5rem;
@@ -40,7 +72,9 @@
         border-radius: 24px;
         background: rgba(255,255,255,0.5);
         box-shadow: 0 20px 45px rgba(140, 109, 49, 0.12);
+        backdrop-filter: blur(6px);
       }
+
       h1 {
         margin: 0 0 0.75rem;
         font-size: clamp(2rem, 4vw, 3rem);
@@ -48,12 +82,14 @@
         text-transform: uppercase;
         color: #6b1f2d;
       }
+
       p {
         margin: 0 0 1rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
         font-size: 0.8rem;
       }
+
       a {
         display: inline-block;
         margin-top: 0.5rem;
@@ -65,14 +101,22 @@
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      a:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 26px rgba(197, 160, 89, 0.18);
       }
     </style>
   </head>
   <body>
-    <div class="card">
-      <h1>Asha &amp; Amol</h1>
-      <p>Loading wedding invitation...</p>
-      <a href="./asha_amol_wedding_invitation%20%288%29%20%281%29.html">Open invitation</a>
+    <div class="page-shell">
+      <div class="card">
+        <h1>Asha &amp; Amol</h1>
+        <p>Loading wedding invitation...</p>
+        <a href="./asha_amol_wedding_invitation%20%288%29%20%281%29.html">Open invitation</a>
+      </div>
     </div>
   </body>
 </html>

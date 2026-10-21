@@ -4,75 +4,200 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASHA & AMOL | Wedding Invitation</title>
-    <script>
-      (() => {
-        const targetFile = 'asha_amol_wedding_invitation (8) (1).html';
-        const currentPath = window.location.pathname.split('/').pop() || '';
-
-        if (!currentPath || /index\.html?/i.test(currentPath) || currentPath === '') {
-          const redirectUrl = new URL('./' + encodeURI(targetFile), window.location.href).href;
-          if (window.location.href !== redirectUrl) {
-            window.location.replace(redirectUrl);
-          }
-        }
-      })();
-    </script>
     <style>
       :root {
-        --bg: #fcfaf6;
-        --ink: #4a3e3d;
-        --gold: #c5a059;
+        --bg: #120f0d;
+        --panel: rgba(25, 18, 14, 0.5);
+        --gold-1: #e7c986;
+        --gold-2: #c7a35d;
+        --gold-3: #f5ebd9;
+        --text: #fef8f1;
       }
+
       * { box-sizing: border-box; }
-      body {
+
+      html, body {
         margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, #fcfaf6 0%, #faf0f0 100%);
-        color: var(--ink);
+        width: 100%;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--text);
         font-family: Georgia, "Times New Roman", serif;
       }
-      .card {
+
+      body {
+        overflow: hidden;
+      }
+
+      .landing {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: #0d0a09;
+        z-index: 20;
+        transition: opacity 1s ease, visibility 1s ease;
+      }
+
+      .landing.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .video-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.56) contrast(1.08) saturate(0.9);
+        transform: scale(1.05);
+      }
+
+      .video-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(8, 7, 6, 0.32), rgba(8, 7, 6, 0.76)),
+          radial-gradient(circle at 50% 30%, rgba(230, 197, 124, 0.18), transparent 38%);
+      }
+
+      .landing-card {
+        position: relative;
+        z-index: 1;
         text-align: center;
-        padding: 2rem 2.5rem;
-        border: 1px solid rgba(197, 160, 89, 0.35);
-        border-radius: 24px;
-        background: rgba(255,255,255,0.5);
-        box-shadow: 0 20px 45px rgba(140, 109, 49, 0.12);
+        padding: clamp(1.8rem, 4vw, 3rem);
+        border: 1px solid rgba(231, 201, 134, 0.4);
+        background: rgba(12, 10, 9, 0.28);
+        border-radius: 28px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.24);
+        animation: floatIn 1s ease both;
       }
-      h1 {
-        margin: 0 0 0.75rem;
-        font-size: clamp(2rem, 4vw, 3rem);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #6b1f2d;
+
+      @keyframes floatIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
-      p {
-        margin: 0 0 1rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-      }
-      a {
+
+      .eyebrow {
         display: inline-block;
-        margin-top: 0.5rem;
-        padding: 0.85rem 1.4rem;
-        border-radius: 999px;
-        background: linear-gradient(135deg, #d4b473 0%, #e8dcb8 50%, #c5a059 100%);
-        color: #6b1f2d;
-        text-decoration: none;
-        font-weight: 700;
-        letter-spacing: 0.08em;
+        margin-bottom: 1rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.38em;
         text-transform: uppercase;
+        color: rgba(245, 235, 217, 0.8);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.5rem, 7vw, 6rem);
+        line-height: 0.9;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #f7f2ea;
+      }
+
+      h1 .amp {
+        color: var(--gold-2);
+      }
+
+      .subtitle {
+        margin-top: 1rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.42em;
+        text-transform: uppercase;
+        color: rgba(245, 235, 217, 0.8);
+      }
+
+      .progress {
+        width: min(380px, 72vw);
+        height: 3px;
+        margin: 2rem auto 0;
+        background: rgba(255,255,255,0.12);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        display: block;
+        width: 0;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--gold-1), var(--gold-2), var(--gold-3));
+        box-shadow: 0 0 20px rgba(231, 201, 134, 0.9);
+        animation: progressFill 3.2s ease forwards;
+      }
+
+      @keyframes progressFill {
+        0% { width: 0%; }
+        100% { width: 100%; }
+      }
+
+      @media (max-width: 640px) {
+        .eyebrow, .subtitle {
+          letter-spacing: 0.22em;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="card">
-      <h1>Asha &amp; Amol</h1>
-      <p>Loading wedding invitation...</p>
-      <a href="./asha_amol_wedding_invitation%20%288%29%20%281%29.html">Open invitation</a>
+    <div class="landing" id="landing">
+      <video
+        class="video-bg"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-label="Wedding video intro"
+      >
+        <source src="./gemini_generated_video_03df296a (1).mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay"></div>
+
+      <div class="landing-card">
+        <div class="eyebrow">Together with family</div>
+        <h1>Asha <span class="amp">&amp;</span> Amol</h1>
+        <div class="subtitle">Preparing our celebration</div>
+        <div class="progress" aria-hidden="true">
+          <span class="progress-bar"></span>
+        </div>
+      </div>
     </div>
+
+    <script>
+      (() => {
+        const targetFile = 'asha_amol_wedding_invitation (8) (1).html';
+        const landing = document.getElementById('landing');
+        const video = document.querySelector('.video-bg');
+
+        const goToInvitation = () => {
+          const redirectUrl = new URL('./' + encodeURI(targetFile), window.location.href).href;
+          if (window.location.href !== redirectUrl) {
+            window.location.replace(redirectUrl);
+          }
+        };
+
+        const startTransition = () => {
+          landing.classList.add('hidden');
+          window.setTimeout(goToInvitation, 900);
+        };
+
+        if (video) {
+          video.play().catch(() => {});
+        }
+
+        window.addEventListener('load', () => {
+          window.setTimeout(startTransition, 3200);
+        });
+      })();
+    </script>
   </body>
 </html>

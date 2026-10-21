@@ -527,6 +527,12 @@
             }, 1200);
         }
 
+        openerVideo.addEventListener('ended', () => {
+            setTimeout(() => {
+                hideVideoOverlay();
+            }, 250);
+        });
+
         window.addEventListener('DOMContentLoaded', () => {
             const playPromise = openerVideo.play();
             if (playPromise !== undefined) {
